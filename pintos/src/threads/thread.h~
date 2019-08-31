@@ -89,8 +89,9 @@ struct thread
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
     int old_priority;                   /* Old Priority. */
-    int nice;                           /* Nice Value */ 
-    int recent_cpu;                     /* Approx recent cpu time used by this thread */ 
+    int nice;                           /* Nice Value. */
+    int recent_cpu;                     /* Approximation of recent 
+                                           cpu time used by this thread. */
     int64_t wakeup_at;                  /* Time to wait before unblock. */
     struct list_elem allelem;           /* List element for all threads list. */
 
@@ -107,7 +108,7 @@ struct thread
     unsigned magic;                     /* Detects stack overflow. */
     struct list locks_acquired;         /* List of locks acquired by a thread */
     bool no_yield;
-  };
+};
 
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.
@@ -144,9 +145,9 @@ int thread_get_priority (void);
 void thread_set_priority (int);
 int thread_get_effective_priority (struct thread *);
 
-void thread_update_priority(struct thread*);
-void thread_update_recent_cpu(struct thread*);
-void thread_update_load_avg(void);
+void thread_update_priority (struct thread *);
+void thread_update_recent_cpu (struct thread *);
+void thread_update_load_avg (void);
 
 int thread_get_nice (void);
 void thread_set_nice (int);

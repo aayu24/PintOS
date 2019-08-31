@@ -1,4 +1,4 @@
-Writing command line to /tmp/s2cddDmKQN.dsk...
+Writing command line to /tmp/z4znRB97ZU.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -25,8 +25,8 @@ Executing 'alarm-priority':
 (alarm-priority) Thread priority 21 woke up.
 (alarm-priority) end
 Execution of 'alarm-priority' complete.
-Timer: 619 ticks
-Thread: 462 idle ticks, 160 kernel ticks, 0 user ticks
+Timer: 616 ticks
+Thread: 465 idle ticks, 154 kernel ticks, 0 user ticks
 Console: 837 characters output
 Keyboard: 0 keys pressed
 Powering off...

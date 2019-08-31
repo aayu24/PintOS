@@ -107,6 +107,14 @@ sema_try_down (struct semaphore *sema)
    and wakes up one thread of those waiting for SEMA, if any.
 
    This function may be called from an interrupt handler. */
+bool priority_sema(const struct list_elem *a, const struct list_elem *b,void *aux UNUSED){
+  struct thread *ta = list_entry(a,struct thread, elem);
+  struct thread *tb = list_entry(b,struct thread, elem);
+  if(!thread_mlfqs){
+     return thread_get_effective_priority(ta) > thread_get_effective_priority(tb);	
+  } 
+  return ta->priority > tb->priority;
+}
 void
 sema_up (struct semaphore *sema) 
 {
@@ -117,7 +125,7 @@ sema_up (struct semaphore *sema)
   old_level = intr_disable ();
   if (!list_empty (&sema->waiters))
   {
-    struct list_elem *e = list_min (&sema->waiters, priority_cmp, NULL);
+    struct list_elem *e = list_min (&sema->waiters, priority_sema, NULL);
     list_remove (e);
     thread_unblock (list_entry (e, struct thread, elem));
 
@@ -136,7 +144,6 @@ sema_up (struct semaphore *sema)
     thread_yield();
   else
     cur->no_yield = false;
-    
 }
 
 static void sema_test_helper (void *sema_);
@@ -340,8 +347,9 @@ cond_cmp (struct list_elem *a, struct list_elem *b, void *aux UNUSED)
   struct thread *ta = list_entry (la, struct thread, elem);
   struct thread *tb = list_entry (lb, struct thread, elem);
 
-  return thread_get_effective_priority (ta) >
-    thread_get_effective_priority (tb);
+  if(!thread_mlfqs)
+  	return thread_get_effective_priority (ta) <  thread_get_effective_priority (tb);
+  return ta->priority < tb->priority;
 }
 
 /* If any threads are waiting on COND (protected by LOCK), then
