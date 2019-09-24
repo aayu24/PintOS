@@ -3,6 +3,7 @@
 #include <syscall-nr.h>
 #include "threads/interrupt.h"
 #include "threads/thread.h"
+#include "threads/init.h"
 #include "threads/vaddr.h"
 #include "userprog/pagedir.h"
 #include <string.h>
@@ -13,7 +14,7 @@ static void valid_up (const void *);
 static int
 halt (void *esp)
 {
-  return 0;
+  power_off();
 }
 
 int
@@ -122,48 +123,6 @@ close (void *esp)
   return 0;
 }
 
-static int
-mmap (void *esp)
-{
-  return 0;
-}
-
-static int
-munmap (void *esp)
-{
-  return 0;
-}
-
-static int
-chdir (void *esp)
-{
-  return 0;
-}
-
-static int
-mkdir (void *esp)
-{
-  return 0;
-}
-
-static int
-readdir (void *esp)
-{
-  return 0;
-}
-
-static int
-isdir (void *esp)
-{
-  return 0;
-}
-
-static int
-inumber (void *esp)
-{
-  return 0;
-}
-
 static int (*syscalls []) (void *) =
   {
     halt,
@@ -178,16 +137,7 @@ static int (*syscalls []) (void *) =
     write,
     seek,
     tell,
-    close,
-
-    mmap,
-    munmap,
-
-    chdir,
-    mkdir,
-    readdir,
-    isdir,
-    inumber
+    close
   };
 
 const int num_calls = sizeof (syscalls) / sizeof (syscalls[0]);
@@ -207,7 +157,6 @@ syscall_handler (struct intr_frame *f UNUSED)
   int syscall_num = *((int *) esp);
   esp += sizeof(int);
 
-  //printf("\nSys: %d", syscall_num);
   valid_up (esp);
   if (syscall_num >= 0 && syscall_num < num_calls)
   {
@@ -217,7 +166,6 @@ syscall_handler (struct intr_frame *f UNUSED)
   }
   else
   {
-    /* TODO:: Raise Exception */
     printf ("\nError, invalid syscall number.");
     thread_exit ();
   }
