@@ -29,7 +29,7 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0x2b066dffe010. after alignment, vector=0x2b066dfff000
+00000000000i[MEM0 ] allocated memory at 0x2b1313862010. after alignment, vector=0x2b1313863000
 00000000000i[MEM0 ] 4.00MB
 00000000000i[MEM0 ] mem block size = 0x00100000, blocks=4
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -54,7 +54,7 @@
 00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
 00000000000i[KBD  ] will paste characters every 1000 keyboard ticks
 00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD   ] HD on ata0-0: '/tmp/lBg4P5kpN1.dsk', 'flat' mode
+00000000000i[HD   ] HD on ata0-0: '/tmp/g6zoEocOUO.dsk', 'flat' mode
 00000000000i[IMG  ] hd_size: 516096
 00000000000i[HD   ] ata0-0: using specified geometry: CHS=1/16/63
 00000000000i[HD   ] HD on ata0-1: 'fs.dsk', 'flat' mode
@@ -98,7 +98,7 @@
 00000000000i[     ] reset of 'harddrv' plugin device by virtual method
 00000000000i[     ] reset of 'serial' plugin device by virtual method
 00000000000i[     ] reset of 'parallel' plugin device by virtual method
-00000004855i[BIOS ] $Revision: 10789 $ $Date: 2011-11-24 17:03:51 +0100 (Do, 24. Nov 2011) $
+00000004855i[BIOS ] $Revision: 1.1 $ $Date: 2019/09/24 14:17:48 $
 00000318302i[KBD  ] reset-disable command received
 00000319566i[BIOS ] Starting rombios32
 00000320013i[BIOS ] Shutdown flag 0
@@ -107,32 +107,32 @@
 00000332095i[BIOS ] Found 1 cpu(s)
 00000348349i[BIOS ] bios_table_addr: 0x000fbde8 end=0x000fcc00
 00000360919i[BIOS ] bios_table_cur_addr: 0x000fbde8
-00000488537i[VBIOS] VGABios $Id: vgabios.c,v 1.75 2011/10/15 14:07:21 vruppert Exp $
+00000488537i[VBIOS] VGABios $Id: bochsout.txt,v 1.1 2019/09/24 14:17:48 group22 Exp $
 00000488608i[BXVGA] VBE known Display Interface b0c0
 00000488640i[BXVGA] VBE known Display Interface b0c5
-00000491565i[VBIOS] VBE Bios $Id: vbe.c,v 1.64 2011/07/19 18:25:05 vruppert Exp $
+00000491565i[VBIOS] VBE Bios $Id: bochsout.txt,v 1.1 2019/09/24 14:17:48 group22 Exp $
 00000837438i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
 00000895458i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
 00003985357i[BIOS ] Booting from 0000:7c00
-00005952506p[UNMP ] >>PANIC<< Shutdown port: shutdown requested
-00005952506i[CPU0 ] CPU is in protected mode (active)
-00005952506i[CPU0 ] CS.mode = 32 bit
-00005952506i[CPU0 ] SS.mode = 32 bit
-00005952506i[CPU0 ] | EAX=0000006e  EBX=c002ff82  ECX=ffff8900  EDX=ffff8900
-00005952506i[CPU0 ] | ESP=c002ff70  EBP=c002ff88  ESI=00000000  EDI=c0114c00
-00005952506i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
-00005952506i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
-00005952506i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-00005952506i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00005952506i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00005952506i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00005952506i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00005952506i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00005952506i[CPU0 ] | EIP=c0100079 (c0100078)
-00005952506i[CPU0 ] | CR0=0xe0010015 CR2=0x00000000
-00005952506i[CPU0 ] | CR3=0x00114000 CR4=0x00000000
-00005952506i[CPU0 ] 0xc0100078>> out dx, al : EE
-00005952506i[CMOS ] Last time is 5 (Thu Jan  1 05:30:05 1970)
-00005952506i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
-00005952506i[     ] restoring default signal behavior
-00005952506i[CTRL ] quit_sim called with exit code 1
+00006320382p[UNMP ] >>PANIC<< Shutdown port: shutdown requested
+00006320382i[CPU0 ] CPU is in protected mode (active)
+00006320382i[CPU0 ] CS.mode = 32 bit
+00006320382i[CPU0 ] SS.mode = 32 bit
+00006320382i[CPU0 ] | EAX=0000006e  EBX=c002fdc6  ECX=ffff8900  EDX=ffff8900
+00006320382i[CPU0 ] | ESP=c002fdb4  EBP=c002fdcc  ESI=c010df28  EDI=c010facd
+00006320382i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df if tf sf zf af pf cf
+00006320382i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+00006320382i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
+00006320382i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00006320382i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00006320382i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00006320382i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00006320382i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00006320382i[CPU0 ] | EIP=c0100079 (c0100078)
+00006320382i[CPU0 ] | CR0=0xe0010015 CR2=0x0000003b
+00006320382i[CPU0 ] | CR3=0x00114000 CR4=0x00000000
+00006320382i[CPU0 ] 0xc0100078>> out dx, al : EE
+00006320382i[CMOS ] Last time is 6 (Thu Jan  1 05:30:06 1970)
+00006320382i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
+00006320382i[     ] restoring default signal behavior
+00006320382i[CTRL ] quit_sim called with exit code 1

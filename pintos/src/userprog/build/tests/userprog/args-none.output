@@ -1,5 +1,5 @@
 Copying tests/userprog/args-none to scratch partition...
-Writing command line to /tmp/fksiJurTfT.dsk...
+Writing command line to /tmp/OrVdPZ13KJ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -27,8 +27,8 @@ Executing 'args-none':
 (args) end
 args-none: exit(0)
 Execution of 'args-none' complete.
-Timer: 365 ticks
-Thread: 30 idle ticks, 288 kernel ticks, 50 user ticks
+Timer: 353 ticks
+Thread: 30 idle ticks, 278 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 196 writes
 hd1:0: 95 reads, 2 writes

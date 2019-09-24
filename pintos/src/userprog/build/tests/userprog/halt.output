@@ -1,5 +1,5 @@
 Copying tests/userprog/halt to scratch partition...
-Writing command line to /tmp/65kIxviGyy.dsk...
+Writing command line to /tmp/3M9RYhdgXn.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -21,12 +21,19 @@ Putting 'halt' into the file system...
 Erasing ustar archive...
 Executing 'halt':
 (halt) begin
-Timer: 262 ticks
-Thread: 30 idle ticks, 203 kernel ticks, 32 user ticks
+User process ABORT at ../../lib/user/syscall.c:68 in halt(): executed an unreachable statement
+Call stack:.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+halt: exit(1)
+Execution of 'halt' complete.
+Timer: 387 ticks
+Thread: 30 idle ticks, 277 kernel ticks, 83 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 198 writes
 hd1:0: 96 reads, 2 writes
-Console: 797 characters output
+Console: 1103 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

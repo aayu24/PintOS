@@ -1,6 +1,6 @@
 Copying tests/userprog/rox-multichild to scratch partition...
 Copying tests/userprog/child-rox to scratch partition...
-Writing command line to /tmp/xQKdQRXp2e.dsk...
+Writing command line to /tmp/UcIuXQbKsZ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -24,13 +24,15 @@ Erasing ustar archive...
 Executing 'rox-multichild':
 (rox-multichild) begin
 (rox-multichild) open "child-rox"
+(rox-multichild) open "child-rox": FAILED
+rox-multichild: exit(1)
 Execution of 'rox-multichild' complete.
 Timer: 446 ticks
-Thread: 30 idle ticks, 382 kernel ticks, 37 user ticks
+Thread: 30 idle ticks, 371 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 87 reads, 418 writes
 hd1:0: 205 reads, 2 writes
-Console: 956 characters output
+Console: 1022 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

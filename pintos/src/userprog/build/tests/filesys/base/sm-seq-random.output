@@ -1,5 +1,5 @@
 Copying tests/filesys/base/sm-seq-random to scratch partition...
-Writing command line to /tmp/2TausetJKc.dsk...
+Writing command line to /tmp/ENPrkbl7BX.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'sm-seq-random':
 (sm-seq-random) begin
 (sm-seq-random) create "nibble"
+(sm-seq-random) create "nibble": FAILED
+sm-seq-random: exit(1)
 Execution of 'sm-seq-random' complete.
-Timer: 375 ticks
-Thread: 30 idle ticks, 297 kernel ticks, 51 user ticks
+Timer: 374 ticks
+Thread: 30 idle ticks, 284 kernel ticks, 63 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 60 reads, 206 writes
 hd1:0: 100 reads, 2 writes
-Console: 905 characters output
+Console: 968 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

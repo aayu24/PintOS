@@ -23,7 +23,6 @@ const int WORD_SIZE = 4; /* Number of bytes per word */
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
-// This part is implemented by Utkarsh and Hardik
 void
 test_stack (int *t)
 {
@@ -332,7 +331,7 @@ load (const char *cmd_line_input, void (**eip) (void), void **esp)
   /* Set up stack. */
   if (!setup_stack (esp, file_name, args))
     goto done;
-  //test_stack (*esp);
+  /* test_stack (*esp); */
 
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
@@ -450,7 +449,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
-// This part is implemented by Chirag, Lavish and Vakul
 static bool
 setup_stack (void **esp, char *file_name, char *args) 
 {
@@ -519,7 +517,6 @@ setup_stack (void **esp, char *file_name, char *args)
         memcpy (*esp, &argc, s);
 
         /* Push return address (UNUSED). */
-	// Just like return 0
         argc = 0;
         s = sizeof (void (*) ());
         *esp -= s;

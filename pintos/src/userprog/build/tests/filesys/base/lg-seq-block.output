@@ -1,5 +1,5 @@
 Copying tests/filesys/base/lg-seq-block to scratch partition...
-Writing command line to /tmp/ITuJh9VLJ5.dsk...
+Writing command line to /tmp/G5Rjp9rPmE.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'lg-seq-block':
 (lg-seq-block) begin
 (lg-seq-block) create "noodle"
+(lg-seq-block) create "noodle": FAILED
+lg-seq-block: exit(1)
 Execution of 'lg-seq-block' complete.
-Timer: 612 ticks
-Thread: 30 idle ticks, 321 kernel ticks, 264 user ticks
+Timer: 606 ticks
+Thread: 30 idle ticks, 310 kernel ticks, 269 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 60 reads, 206 writes
 hd1:0: 100 reads, 2 writes
-Console: 900 characters output
+Console: 961 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

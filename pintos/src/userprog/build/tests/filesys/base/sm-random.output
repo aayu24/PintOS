@@ -1,5 +1,5 @@
 Copying tests/filesys/base/sm-random to scratch partition...
-Writing command line to /tmp/rRc6v18ADX.dsk...
+Writing command line to /tmp/U90YGgv3sm.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'sm-random':
 (sm-random) begin
 (sm-random) create "bazzle"
+(sm-random) create "bazzle": FAILED
+sm-random: exit(1)
 Execution of 'sm-random' complete.
-Timer: 358 ticks
-Thread: 30 idle ticks, 292 kernel ticks, 39 user ticks
+Timer: 359 ticks
+Thread: 30 idle ticks, 283 kernel ticks, 49 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 61 reads, 210 writes
 hd1:0: 102 reads, 2 writes
-Console: 881 characters output
+Console: 936 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

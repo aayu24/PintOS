@@ -1,5 +1,5 @@
 Copying tests/userprog/open-empty to scratch partition...
-Writing command line to /tmp/BTKyrizwv3.dsk...
+Writing command line to /tmp/LzyPnkZPwo.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -21,13 +21,15 @@ Putting 'open-empty' into the file system...
 Erasing ustar archive...
 Executing 'open-empty':
 (open-empty) begin
+(open-empty) open() returned 0 instead of -1: FAILED
+open-empty: exit(1)
 Execution of 'open-empty' complete.
-Timer: 344 ticks
-Thread: 30 idle ticks, 288 kernel ticks, 29 user ticks
+Timer: 348 ticks
+Thread: 30 idle ticks, 280 kernel ticks, 41 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 198 writes
 hd1:0: 96 reads, 2 writes
-Console: 857 characters output
+Console: 930 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

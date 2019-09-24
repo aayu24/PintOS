@@ -1,5 +1,5 @@
 Copying tests/filesys/base/lg-random to scratch partition...
-Writing command line to /tmp/6705dtBPch.dsk...
+Writing command line to /tmp/g5T3MneZiw.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'lg-random':
 (lg-random) begin
 (lg-random) create "bazzle"
+(lg-random) create "bazzle": FAILED
+lg-random: exit(1)
 Execution of 'lg-random' complete.
-Timer: 618 ticks
-Thread: 30 idle ticks, 323 kernel ticks, 268 user ticks
+Timer: 613 ticks
+Thread: 30 idle ticks, 314 kernel ticks, 272 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 61 reads, 210 writes
 hd1:0: 102 reads, 2 writes
-Console: 882 characters output
+Console: 937 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

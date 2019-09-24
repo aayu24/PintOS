@@ -23,7 +23,6 @@ const int WORD_SIZE = 4; /* Number of bytes per word */
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
-// This part is implemented by Utkarsh and Hardik
 void
 test_stack (int *t)
 {
@@ -99,16 +98,12 @@ start_process (void *file_name_)
    child of the calling process, or if process_wait() has already
    been successfully called for the given TID, returns -1
    immediately, without waiting.
+
    This function will be implemented in problem 2-2.  For now, it
    does nothing. */
 int
 process_wait (tid_t child_tid UNUSED) 
 {
-  int i;
-  for (i = 0; i< 1<<10; i++)
-  {
-    thread_yield ();
-  }
   return -1;
 }
 
@@ -239,7 +234,7 @@ load (const char *cmd_line_input, void (**eip) (void), void **esp)
   char *args, *file_name;
   /* Separate file_name and args */
   file_name = strtok_r (cmd_line_input, " ", &args);
-  /* printf ("file: %s \nargs: %s",file_name, args); */
+  //printf ("file: %s \nargs: %s \n\n\n\n\n",file_name, args);
 
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create ();
@@ -396,11 +391,15 @@ validate_segment (const struct Elf32_Phdr *phdr, struct file *file)
 /* Loads a segment starting at offset OFS in FILE at address
    UPAGE.  In total, READ_BYTES + ZERO_BYTES bytes of virtual
    memory are initialized, as follows:
+
         - READ_BYTES bytes at UPAGE must be read from FILE
           starting at offset OFS.
+
         - ZERO_BYTES bytes at UPAGE + READ_BYTES must be zeroed.
+
    The pages initialized by this function must be writable by the
    user process if WRITABLE is true, read-only otherwise.
+
    Return true if successful, false if a memory allocation error
    or disk read error occurs. */
 static bool
@@ -450,7 +449,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
-// This part is implemented by Chirag, Lavish and Vakul
 static bool
 setup_stack (void **esp, char *file_name, char *args) 
 {
@@ -519,7 +517,6 @@ setup_stack (void **esp, char *file_name, char *args)
         memcpy (*esp, &argc, s);
 
         /* Push return address (UNUSED). */
-	// Just like return 0
         argc = 0;
         s = sizeof (void (*) ());
         *esp -= s;

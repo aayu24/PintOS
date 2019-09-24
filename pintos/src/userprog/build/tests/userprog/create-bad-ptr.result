@@ -1,5 +1,12 @@
 FAIL
-Kernel panic in run: PANIC at ../../userprog/exception.c:99 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc011ee68
-Translation of call stack:
-0xc011ee68: (unknown)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (create-bad-ptr) begin
+  create-bad-ptr: exit(-1)
+Differences in `diff -u' format:
+  (create-bad-ptr) begin
+- create-bad-ptr: exit(-1)
++ (create-bad-ptr) create(0x20101234): 0
++ (create-bad-ptr) end
++ create-bad-ptr: exit(0)

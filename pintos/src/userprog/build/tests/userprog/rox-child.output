@@ -1,6 +1,6 @@
 Copying tests/userprog/rox-child to scratch partition...
 Copying tests/userprog/child-rox to scratch partition...
-Writing command line to /tmp/NVpBPUM073.dsk...
+Writing command line to /tmp/72DGDQip3K.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -24,13 +24,15 @@ Erasing ustar archive...
 Executing 'rox-child':
 (rox-child) begin
 (rox-child) open "child-rox"
+(rox-child) open "child-rox": FAILED
+rox-child: exit(1)
 Execution of 'rox-child' complete.
-Timer: 442 ticks
-Thread: 30 idle ticks, 380 kernel ticks, 35 user ticks
+Timer: 440 ticks
+Thread: 30 idle ticks, 369 kernel ticks, 44 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 87 reads, 418 writes
 hd1:0: 205 reads, 2 writes
-Console: 926 characters output
+Console: 982 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

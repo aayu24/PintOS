@@ -1,5 +1,5 @@
 Copying tests/filesys/base/lg-seq-random to scratch partition...
-Writing command line to /tmp/yXGfGl7wa2.dsk...
+Writing command line to /tmp/S5lzT9HeiC.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'lg-seq-random':
 (lg-seq-random) begin
 (lg-seq-random) create "nibble"
+(lg-seq-random) create "nibble": FAILED
+lg-seq-random: exit(1)
 Execution of 'lg-seq-random' complete.
-Timer: 613 ticks
-Thread: 30 idle ticks, 322 kernel ticks, 264 user ticks
+Timer: 608 ticks
+Thread: 30 idle ticks, 312 kernel ticks, 269 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 60 reads, 206 writes
 hd1:0: 100 reads, 2 writes
-Console: 906 characters output
+Console: 969 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

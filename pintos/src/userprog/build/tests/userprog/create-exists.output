@@ -1,5 +1,5 @@
 Copying tests/userprog/create-exists to scratch partition...
-Writing command line to /tmp/kBy2Guqizm.dsk...
+Writing command line to /tmp/QmdFSZaPH7.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'create-exists':
 (create-exists) begin
 (create-exists) create quux.dat
+(create-exists) create quux.dat: FAILED
+create-exists: exit(1)
 Execution of 'create-exists' complete.
-Timer: 353 ticks
-Thread: 30 idle ticks, 290 kernel ticks, 36 user ticks
+Timer: 354 ticks
+Thread: 30 idle ticks, 281 kernel ticks, 46 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 60 reads, 198 writes
 hd1:0: 96 reads, 2 writes
-Console: 904 characters output
+Console: 967 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

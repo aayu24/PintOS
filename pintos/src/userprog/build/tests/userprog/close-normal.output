@@ -1,6 +1,6 @@
 Copying tests/userprog/close-normal to scratch partition...
 Copying ../../tests/userprog/sample.txt to scratch partition...
-Writing command line to /tmp/lBXQHDO2TW.dsk...
+Writing command line to /tmp/zO5W938nut.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -24,13 +24,15 @@ Erasing ustar archive...
 Executing 'close-normal':
 (close-normal) begin
 (close-normal) open "sample.txt"
+(close-normal) open "sample.txt": FAILED
+close-normal: exit(1)
 Execution of 'close-normal' complete.
-Timer: 380 ticks
-Thread: 30 idle ticks, 318 kernel ticks, 36 user ticks
+Timer: 382 ticks
+Thread: 30 idle ticks, 308 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 86 reads, 204 writes
 hd1:0: 98 reads, 2 writes
-Console: 945 characters output
+Console: 1008 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

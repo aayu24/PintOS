@@ -7,6 +7,6 @@ Acceptable output:
 Differences in `diff -u' format:
   (create-null) begin
 - create-null: exit(-1)
-+ (create-null) create(NULL): 1
++ (create-null) create(NULL): 0
 + (create-null) end
 + create-null: exit(0)

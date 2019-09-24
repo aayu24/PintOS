@@ -1,6 +1,6 @@
 Copying tests/userprog/read-zero to scratch partition...
 Copying ../../tests/userprog/sample.txt to scratch partition...
-Writing command line to /tmp/KCYZvqX9pR.dsk...
+Writing command line to /tmp/33qyIcpWIF.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -24,13 +24,15 @@ Erasing ustar archive...
 Executing 'read-zero':
 (read-zero) begin
 (read-zero) open "sample.txt"
+(read-zero) open "sample.txt": FAILED
+read-zero: exit(1)
 Execution of 'read-zero' complete.
 Timer: 379 ticks
-Thread: 30 idle ticks, 317 kernel ticks, 35 user ticks
+Thread: 30 idle ticks, 307 kernel ticks, 45 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 86 reads, 206 writes
 hd1:0: 99 reads, 2 writes
-Console: 927 characters output
+Console: 984 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

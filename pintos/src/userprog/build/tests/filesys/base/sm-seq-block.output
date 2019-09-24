@@ -1,5 +1,5 @@
 Copying tests/filesys/base/sm-seq-block to scratch partition...
-Writing command line to /tmp/UK9pgu81hd.dsk...
+Writing command line to /tmp/zGPAyby3pb.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -22,13 +22,15 @@ Erasing ustar archive...
 Executing 'sm-seq-block':
 (sm-seq-block) begin
 (sm-seq-block) create "noodle"
+(sm-seq-block) create "noodle": FAILED
+sm-seq-block: exit(1)
 Execution of 'sm-seq-block' complete.
-Timer: 372 ticks
-Thread: 30 idle ticks, 293 kernel ticks, 52 user ticks
+Timer: 373 ticks
+Thread: 30 idle ticks, 283 kernel ticks, 63 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 60 reads, 206 writes
 hd1:0: 100 reads, 2 writes
-Console: 899 characters output
+Console: 960 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

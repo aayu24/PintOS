@@ -1,6 +1,6 @@
 Copying tests/userprog/write-bad-ptr to scratch partition...
 Copying ../../tests/userprog/sample.txt to scratch partition...
-Writing command line to /tmp/faLSFN8cft.dsk...
+Writing command line to /tmp/8kPloRRzTp.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.5.1
@@ -24,13 +24,15 @@ Erasing ustar archive...
 Executing 'write-bad-ptr':
 (write-bad-ptr) begin
 (write-bad-ptr) open "sample.txt"
+(write-bad-ptr) open "sample.txt": FAILED
+write-bad-ptr: exit(1)
 Execution of 'write-bad-ptr' complete.
-Timer: 381 ticks
-Thread: 30 idle ticks, 317 kernel ticks, 37 user ticks
+Timer: 382 ticks
+Thread: 30 idle ticks, 308 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 86 reads, 204 writes
 hd1:0: 98 reads, 2 writes
-Console: 951 characters output
+Console: 1016 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
