@@ -107,19 +107,25 @@ sema_try_down (struct semaphore *sema)
    and wakes up one thread of those waiting for SEMA, if any.
 
    This function may be called from an interrupt handler. */
-bool priority_sema(const struct list_elem *a, const struct list_elem *b,void *aux UNUSED){
-  struct thread *ta = list_entry(a,struct thread, elem);
-  struct thread *tb = list_entry(b,struct thread, elem);
-  if(!thread_mlfqs){
-     return thread_get_effective_priority(ta) > thread_get_effective_priority(tb);	
-  } 
-  return ta->priority > tb->priority;
+bool
+priority_sema (const struct list_elem *a, const struct list_elem *b,void *aux UNUSED)
+{
+  struct thread *ta = list_entry (a, struct thread, elem);
+  struct thread *tb = list_entry (b, struct thread, elem);
+
+    if(thread_mlfqs!=true)
+  {
+  return thread_get_effective_priority (ta) > thread_get_effective_priority (tb);
+  }
+  return ta->priority > tb->priority ;
 }
+
+
 void
 sema_up (struct semaphore *sema) 
 {
   enum intr_level old_level;
-  struct thread *t = NULL;
+
   ASSERT (sema != NULL);
 
   old_level = intr_disable ();
@@ -127,8 +133,7 @@ sema_up (struct semaphore *sema)
   {
     struct list_elem *e = list_min (&sema->waiters, priority_sema, NULL);
     list_remove (e);
-    t = list_entry (e, struct thread, elem);
-    thread_unblock (t);
+    thread_unblock (list_entry (e, struct thread, elem));
 
     /*
       thread_unblock (list_entry (list_pop_front (&sema->waiters),
@@ -141,10 +146,11 @@ sema_up (struct semaphore *sema)
   /* The thread unblocked might have higher priority than the current thread.
      We must yield to that thread in this case. */
   struct thread *cur = thread_current ();
-  if (t == NULL || cur->no_yield == true)
-      cur->no_yield = false;
+  if (cur->no_yield == false)
+    thread_yield();
   else
-      thread_yield();
+    cur->no_yield = false;
+    
 }
 
 static void sema_test_helper (void *sema_);
@@ -348,9 +354,14 @@ cond_cmp (struct list_elem *a, struct list_elem *b, void *aux UNUSED)
   struct thread *ta = list_entry (la, struct thread, elem);
   struct thread *tb = list_entry (lb, struct thread, elem);
 
-  if(!thread_mlfqs)
-  	return thread_get_effective_priority (ta) > thread_get_effective_priority (tb);
-  return ta->priority > tb->priority;
+  if(thread_mlfqs!=true)
+  {
+  return thread_get_effective_priority (ta) > thread_get_effective_priority (tb);
+  }
+  return ta->priority > tb->priority ;
+
+  // return thread_get_effective_priority (ta) >
+  //   thread_get_effective_priority (tb);
 }
 
 /* If any threads are waiting on COND (protected by LOCK), then

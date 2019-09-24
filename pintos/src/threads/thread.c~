@@ -178,12 +178,14 @@ thread_tick (void)
 
   if (ticks % TIMER_FREQ == 0)
     schedule_sec = true;
-  
-   /* schedule_sec for Task 2 and schedule_slice for Task 3 */ 
-  if ((schedule_sec || schedule_slice) && bsd_scheduler_thread->status == THREAD_BLOCKED && thread_mlfqs){
+
+   /*** schedule_sec for Task 2 and schedule_slice for Task 3 ***/
+  if ((schedule_sec || schedule_slice) && bsd_scheduler_thread->status == THREAD_BLOCKED && thread_mlfqs)
+  {
     thread_unblock (bsd_scheduler_thread);
-    intr_yield_on_return();
+    intr_yield_on_return ();
   }
+
   /* Enforce preemption. */
   if (++thread_ticks >= TIME_SLICE)
   {
@@ -272,14 +274,16 @@ thread_create (const char *name, int priority,
 
 /* Comparision function used for sorting ready_list in accordance with
    their priority in descending order. */
-
-bool 
-priority_cmp_mlfqs(const struct list_elem *a, const struct list_elem *b,void *aux UNUSED){
-  struct thread *ta=list_entry(a, struct thread, elem);
-  struct thread *tb=list_entry(b, struct thread, elem);
-  return ta->priority > tb->priority;
+bool
+priority_cmp_mlfqs (const struct list_elem *a, const struct list_elem *b,
+        void *aux UNUSED)
+{
+  struct thread *ta = list_entry (a, struct thread, elem);
+  struct thread *tb = list_entry (b, struct thread, elem);
+  return ta->priority < tb->priority ;
 }
- 
+
+
 bool
 priority_cmp (const struct list_elem *a, const struct list_elem *b,
         void *aux UNUSED)
@@ -287,7 +291,7 @@ priority_cmp (const struct list_elem *a, const struct list_elem *b,
   struct thread *ta = list_entry (a, struct thread, elem);
   struct thread *tb = list_entry (b, struct thread, elem);
 
-  return thread_get_effective_priority (ta) >
+  return thread_get_effective_priority (ta) <
     thread_get_effective_priority (tb);
 }
 
@@ -499,14 +503,14 @@ thread_yield (void)
 void
 thread_foreach (thread_action_func *func, void *aux)
 {
-  struct list_elem *e;
+  struct list_elem *ef;
 
   ASSERT (intr_get_level () == INTR_OFF);
 
-  for (e = list_begin (&all_list); e != list_end (&all_list);
-       e = list_next (e))
+  for (ef = list_begin (&all_list); ef != list_end (&all_list);
+       ef = list_next (ef))
     {
-      struct thread *t = list_entry (e, struct thread, allelem);
+      struct thread *t = list_entry (ef, struct thread, allelem);
       func (t, aux);
     }
 }
@@ -551,8 +555,9 @@ thread_set_priority (int new_priority)
 int
 thread_get_priority (void) 
 {
-  if(thread_mlfqs){
-    return thread_current()->priority;
+  if (thread_mlfqs)
+  {
+      return thread_current()->priority;
   }
   return thread_get_effective_priority (thread_current ());
 }
@@ -598,8 +603,10 @@ thread_get_effective_priority (struct thread *t)
 void
 thread_update_priority (struct thread *t)
 {
+  enum intr_level old_level = intr_disable ();
   int aux = _ADD_INT (_DIVIDE_INT (t->recent_cpu, 4), 2*t->nice);
   t->priority = _TO_INT_ZERO (_INT_SUB (PRI_MAX, aux));
+  intr_set_level (old_level);
 }
 
 /* Updates recent_cpu value using:
@@ -671,9 +678,9 @@ thread_get_load_avg (void)
 int
 thread_get_recent_cpu (void) 
 {
-  return _TO_INT_NEAREST (_MULTIPLY_INT (thread_current ()->recent_cpu, 100)) ;
+  return _TO_INT_NEAREST (_MULTIPLY_INT (thread_current ()->recent_cpu, 100));
 }
-
+
 /* Idle thread.  Executes when no other thread is ready to run.
 
    The idle thread is initially put on the ready list by
@@ -766,25 +773,10 @@ void bsd_scheduler ()
     old_level = intr_disable ();
     thread_block ();
     intr_set_level (old_level);
-    old_level = intr_disable(); 
+    old_level = intr_disable ();
+
     /* Use MLFQS only if the flag is set at kernel boot. */
     if(thread_mlfqs){
-      if (schedule_sec)
-      {
-	thread_update_load_avg();        
-	for (e = list_begin (&all_list); e != list_end (&all_list);
-             e = list_next (e))
-        {
-          struct thread *t = list_entry (e, struct thread, allelem);
-          if (t != manager_thread &&
-              t != bsd_scheduler_thread &&
-              t != idle_thread)
-          {
-            thread_update_recent_cpu (t);
-          }
-        }
-        schedule_sec = false;
-      }
       if (schedule_slice)
       {
         for (e = list_begin (&all_list); e != list_end (&all_list);
@@ -800,7 +792,27 @@ void bsd_scheduler ()
         }
         schedule_slice = false;
       }
+      if (schedule_sec)
+      {
+        thread_update_load_avg ();
+        for (e = list_begin (&all_list); e != list_end (&all_list);
+             e = list_next (e))
+        {
+          struct thread *t = list_entry (e, struct thread, allelem);
+          if (t != manager_thread &&
+              t != bsd_scheduler_thread &&
+              t != idle_thread)
+          {
+            thread_update_recent_cpu (t);
+            thread_update_priority (t);
+            
+          }
+        }
+        schedule_sec = false;
+      }
     }
+
+    intr_set_level (old_level);
   }
 }
 
@@ -889,17 +901,31 @@ alloc_frame (struct thread *t, size_t size)
 static struct thread *
 next_thread_to_run (void) 
 {
+  // if (list_empty (&ready_list))
+  //   return idle_thread;
+  // else
+  // {
+  //   struct list_elem *e = list_min (&ready_list, priority_cmp, NULL);
+  //   list_remove (e);
+  //   return list_entry (e, struct thread, elem);
+  // }
+
+
   if (list_empty (&ready_list))
     return idle_thread;
+  /* Ready list is no more ordered , hence remove list_max */
   else
   {
     struct list_elem *e;
-    if(thread_mlfqs){
-	e=list_min(&ready_list, priority_cmp_mlfqs, NULL);
+    if(thread_mlfqs==true)
+    {
+       e= list_max (&ready_list, priority_cmp_mlfqs, NULL);
     }
-    else{
-	e=list_min(&ready_list,priority_cmp,NULL);
+    else
+    {
+      e = list_max (&ready_list, priority_cmp, NULL);
     }
+    
     list_remove (e);
     return list_entry (e, struct thread, elem);
   }

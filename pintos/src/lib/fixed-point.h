@@ -10,7 +10,8 @@
 /* Here x and y are fixed-point (17.14) reals and n is a 32 bit integer */
 #define _TO_FP(n) ((n) * (_F))
 #define _TO_INT_ZERO(x) ((x) / (_F))
-#define _TO_INT_NEAREST(x) ((x) >= 0 ? ((x) + (_F) / 2) / (_F) : ((x) - (_F) / 2) / (_F))
+#define _TO_INT_NEAREST(x) (((x) >= 0 ? ((x) + (_F) / 2) / (_F) : \
+                             ((x) - (_F) / 2) / (_F)))
 #define _ADD(x, y) ((x) + (y))
 #define _SUB(x, y) ((x) - (y))
 #define _ADD_INT(x, n) ((x) + (n) * (_F))
